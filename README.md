@@ -1,27 +1,19 @@
-# NinaProject
+# Cloudfront link
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
+Link do Cloudfront: http://dzw3hhbdwxf7e.cloudfront.net/ 
 
-## Development server
+# Rotas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Na rota raiz, se encontra a tela de login, onde o usuário pode passar previamente o username do Github que se deseja fazer login
 
-## Code scaffolding
+A rota /profile contém as informações básicas sobre o Github que se fez o login, como a foto do perfil e a bio.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+A rota /repositories contém a lista de repositórios, públicos e privados, do usuário logado. Contendo também a paginação que está fazendo uso da API.
 
-## Build
+# Dificuldades
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Não consegui, no tempo dado, passar o tratamento das requisições para o uso com RxJs. Meu planejamento era fazer isso após o sistema estar funcionando, pois é algo que não tenho o conhecimento necessário para começar fazendo. Logo, minha premissa era fazer a refatoração no final.
 
-## Running unit tests
+Além disso, passei uma parcela muito grande do tempo buscando solução de um erro ao fazer um POST para obtenção do OAUTH_TOKEN, da API do Github. O problema era que no Angular, por padrão, o CORS bloqueia certas operações na rede. Resolvi fazendo um proxy.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Um outro problema foi a hospedagem do Amazon Cloudfront que estava dando 403, e assei um tempo vendo se isso era por causa do Amazon S3, cujo usei para armazer a build.
