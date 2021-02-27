@@ -1,0 +1,33 @@
+.list-box{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.list-box mat-list {
+    display: flex;
+    flex-direction: column;
+    margin: auto auto;
+}
+
+.list-box mat-list mat-list-item {
+    
+    box-shadow: -7px 17px 15px -18px rgba(148,99,148,1);
+    border-radius: 5px;
+    outline: inherit;
+    border: thin 5px;
+    margin-bottom: 10px;
+}
+
+.list-box mat-list mat-list-item :hover{
+    transition: 2s;
+    box-shadow: -7p
+    ￼x 17px 15px -18px red;
+
+}
+
+
+mat-form-field {
+    margin: auto auto;
+    width: fit-content;
+}

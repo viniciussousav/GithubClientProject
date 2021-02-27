@@ -1,8 +1,13 @@
-#loginFormDiv {
+
+.loginFormDiv {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+}
+
+.loginFormDiv div {
     display: flex;
     flex-direction: column;
     margin: auto;
-
-    align-items: center;
-    border-style: solid;
 }

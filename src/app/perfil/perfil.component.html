@@ -1,0 +1,32 @@
+<div class="card-div">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{profile.name}}</mat-card-title>
+            <mat-card-subtitle> {{profile.login}} | {{profile.location}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src={{profile.avatar_url}} alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            <p>
+                {{profile.bio}}
+            </p>
+
+            <h4> <strong>Quantidade de repositórios públicos</strong>: {{profile.public_repos}} </h4>
+            <h4> <strong>Seguidores:</strong>: {{profile.followers}} </h4>
+            <h4> <strong>Seguindo: </strong>: {{profile.following}} </h4>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button id="git-btn-link" mat-raised-button color="primary"> <a href={{profile.html_url}}> Ver perfil no
+                    github</a></button>
+
+            <button id="git-btn-link" mat-stroked-button color="primary" routerLink ="/repositories" > Ver lista de repositórios </button>
+        </mat-card-actions>
+    </mat-card>
+
+    <!-- <div class="rep-div" matRipple [matRippleCentered]="false"
+        [matRippleDisabled]="false" [matRippleUnbounded]="true" [matRippleRadius]="50" matRippleColor= "Purple">
+        Click me
+    </div> -->
+
+</div>

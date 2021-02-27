@@ -1,14 +1,13 @@
-<div id="loginFormDiv">
-    <mat-form-field appearance="outline">
-        <mat-label>Email do Github</mat-label>
-        <input matInput placeholder="Ex: email@gmail.com">
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
-        <mat-label>Senha</mat-label>
-        <input matInput placeholder="Insira sua senha aqui">
-    </mat-form-field>
+<div class="loginFormDiv">
+    <div>
 
-    <button mat-flat-button> Logar </button>
+        <h1>Olá, para começar faça login <br> com a sua conta do Github!</h1>
 
+        <mat-form-field appearance="outline">
+            <mat-label>Username ou email do Github</mat-label>
+            <input matInput [(ngModel)]="username_email" placeholder="Ex: meulogin">
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" (click)="authenticate()"> Acessar conta Github </button>
+    </div>
 </div>

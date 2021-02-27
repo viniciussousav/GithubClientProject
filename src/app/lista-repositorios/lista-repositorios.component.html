@@ -1,0 +1,14 @@
+
+<div class="list-box">
+    <mat-form-field appearance="standard">
+        <mat-label for="search-text">Pesquise por um repositório</mat-label>
+        <input matInput id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Ex: AngularStarterProject">
+      </mat-form-field>
+    <mat-list id="list-group">
+        <mat-list-item *ngFor="let item of repositories | filterPipe: searchText">
+            <div mat-line><strong>{{item.name}}</strong></div>
+            <div mat-line>{{item.full_name}}</div>
+            <div mat-line>{{item.description || "Nenhuma descrição"}}</div>
+        </mat-list-item>
+    </mat-list>
+</div>
