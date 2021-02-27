@@ -21,8 +21,9 @@ export class PerfilComponent implements OnInit {
     console.log("Profile token " + this.token)
 
     this.perfilService.getAuthenticatedUser(this.token).subscribe(data => {
-      this.profile = data
-      this.loginService.setLoginString(this.profile.login)
+      this.profile = data;
+      this.loginService.setLoginString(this.profile.login);
+      console.log(data);
     })
   }
 

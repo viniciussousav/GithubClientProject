@@ -24,15 +24,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
     let code = this.route.snapshot.queryParamMap.get("code")
-    
-    if(code){
+
+    if (code) {
       console.log("Requested code " + code);
-      // this.loginService.requestToken(code).subscribe(data => {
-      //   if(data.access_token){
-      //     //this.loginService.setObtainedToken(data.access_token);
-              this.router.navigate(['profile']);
-      //   }
-      // })
+      this.loginService.requestToken(code).subscribe(data => {
+        if (data.access_token) {
+          this.loginService.setObtainedToken(data.access_token);
+          this.router.navigate(['profile']);
+        }
+      })
     }
   }
 
@@ -41,6 +41,6 @@ export class LoginComponent implements OnInit {
     console.log(this.username_email)
 
     this.loginService.oauth(this.username_email);
-    
+
   }
 }

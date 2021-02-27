@@ -11,11 +11,11 @@ export class LoginService {
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Accept': '*/*'
+    'Accept': 'application/json'
   })
 
   url_authentication: string = "https://github.com/login/oauth/authorize"
-  access_token: string = "3bf2d2cc4bc03af5ebc1bdbd676ef1e7fc060787"
+  access_token: string = ""
   login: string = ""
 
   constructor(private httpClient: HttpClient) { }
@@ -40,7 +40,7 @@ export class LoginService {
       "code": code
     }
 
-    return this.httpClient.post('https://github.com/login/oauth/access_token', body, { headers: this.headers });
+    return this.httpClient.post('/login/oauth/access_token', body, { headers: this.headers, responseType: "json"});
   }
 
   getObtainedToken(): string {
