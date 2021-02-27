@@ -11,12 +11,24 @@ export class ListaRepositoriosService {
 
   constructor(private httpClient: HttpClient, private loginService: LoginService) { }
 
-  getListRepositories(){
+  getListRepositoriesByPage(page: number){
 
     let login = this.loginService.getLoginString();
     let token = this.loginService.getObtainedToken();
 
-    return this.httpClient.get<any[]>(`https://api.github.com/users/${login}/repos`, {
+    return this.httpClient.get<any[]>(`https://api.github.com/user/repos?page=${page}&per_page=10`, {
+      headers: {
+        "Authorization": "token " + token
+      }
+    })
+  }
+
+  getAllListRepositories(){
+
+    let login = this.loginService.getLoginString();
+    let token = this.loginService.getObtainedToken();
+
+    return this.httpClient.get<any[]>(`https://api.github.com/user/repos`, {
       headers: {
         "Authorization": "token " + token
       }

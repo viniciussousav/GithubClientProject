@@ -11,7 +11,7 @@ import { PerfilService } from './perfil.service';
 export class PerfilComponent implements OnInit {
 
 
-  token = "3bf2d2cc4bc03af5ebc1bdbd676ef1e7fc060787"
+  token = ""
   profile: any;
 
   constructor(private perfilService: PerfilService, private loginService: LoginService) { 

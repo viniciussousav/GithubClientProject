@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from './login.service';
-import { map, switchMap } from 'rxjs/operators'
 
 @Component({
   selector: 'app-login',

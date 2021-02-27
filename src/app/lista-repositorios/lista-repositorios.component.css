@@ -26,6 +26,11 @@
 
 }
 
+#page-nav{
+    display: flex;
+    flex-direction: row;
+    margin: auto auto;
+}
 
 mat-form-field {
     margin: auto auto;
