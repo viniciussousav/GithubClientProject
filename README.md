@@ -25,10 +25,10 @@ Eu consegui hospedar o site mas o bucket do Amazon S3 bloqueia requisições POS
 # Telas
 
 ## Tela de Login
-![Alt text]("./screenshot_login.jpeg")
+![Alt text](screenshot_login.jpeg)
 
 ## Tela de Perfil
-![Alt text]("./screenshot_profile.jpeg")
+![Alt text](screenshot_profile.jpeg)
 
 ## Tela de Repositórios
-![Alt text]("./screenshot_repositories.jpeg")
+![Alt text](screenshot_repositories.jpeg)
