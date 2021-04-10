@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Repository } from '../classes/repository';
 import { ListaRepositoriosService } from './lista-repositorios.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ListaRepositoriosService } from './lista-repositorios.service';
 })
 export class ListaRepositoriosComponent implements OnInit {
 
-  repositories: any;
+  repositories: Repository[] = [];
   searchText: string = '';
   page: number = 1;
   repo_count = 0;
@@ -16,37 +17,32 @@ export class ListaRepositoriosComponent implements OnInit {
   constructor(private listaRepositoriosService: ListaRepositoriosService) { }
 
   ngOnInit(): void {
-    this.listaRepositoriosService.getAllListRepositories().subscribe(data => {
-      this.repo_count = data.length;
-      console.log("total " + this.repo_count)
-      
-    });
-
-    this.goToPage(this.page)
-
-
+    this.listaRepositoriosService.getAllListRepositories().subscribe(
+      {
+        next: repos => {
+          this.getRepositoriesByPage(this.page);
+          this.repo_count = repos.length;
+          console.log("total " + this.repo_count);
+        },
+        error: err => {
+          this.repo_count = 0;
+          console.log('Error getting all repositories', err);
+        }
+      });
   }
 
-  goToPage(page: number) {
-    console.log("Pagina atual " + this.page)
-    this.listaRepositoriosService.getListRepositoriesByPage(page).subscribe(data => {
-      this.repositories = data;
-    });
-  }
-
-  nextPage() {
-    console.log("a");
-    if ((this.page + 1) * 10 <= this.repo_count) {
-      this.page += 1;
-      this.goToPage(this.page)
-      console.log("b");
-    }
-  }
-
-  previusPage() {
-    if (this.page > 0) {
-      this.page -= 1;
-      this.goToPage(this.page)
+  getRepositoriesByPage(page: number): void {
+    if (this.page > 0 && page * 10 < this.repo_count) {
+      this.listaRepositoriosService.getListRepositoriesByPage(page).subscribe(
+        {
+          next: repos => {
+            this.repositories = repos;
+          },
+          error: err => {
+            console.log(`Error getting repositories from page ${page}`, err);
+          }
+        });
+        this.page = page;
     }
   }
 }

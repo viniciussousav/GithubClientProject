@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Repository } from '../classes/repository';
 import { LoginService } from '../login/login.service';
 
 @Injectable({
@@ -7,28 +9,26 @@ import { LoginService } from '../login/login.service';
 })
 export class ListaRepositoriosService {
 
-
+  private _REPO_URL = "https://api.github.com/user/repos"
 
   constructor(private httpClient: HttpClient, private loginService: LoginService) { }
 
-  getListRepositoriesByPage(page: number){
+  getListRepositoriesByPage(page: number): Observable<Repository[]> {
 
-    let login = this.loginService.getLoginString();
     let token = this.loginService.getObtainedToken();
 
-    return this.httpClient.get<any[]>(`https://api.github.com/user/repos?page=${page}&per_page=10`, {
+    return this.httpClient.get<Repository[]>(`${this._REPO_URL}?page=${page}&per_page=10`, {
       headers: {
         "Authorization": "token " + token
       }
     })
   }
 
-  getAllListRepositories(){
+  getAllListRepositories(): Observable<Repository[]> {
 
-    let login = this.loginService.getLoginString();
     let token = this.loginService.getObtainedToken();
 
-    return this.httpClient.get<any[]>(`https://api.github.com/user/repos`, {
+    return this.httpClient.get<Repository[]>(this._REPO_URL, {
       headers: {
         "Authorization": "token " + token
       }

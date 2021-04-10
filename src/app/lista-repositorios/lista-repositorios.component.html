@@ -7,9 +7,9 @@
     </mat-form-field>
 
     <div id="page-nav">
-        <button id="back-page" style="width: fit-content;" mat-stroked-button color="primary" (click)="previusPage()">
+        <button id="back-page" style="width: fit-content;" mat-stroked-button color="primary" (click)="getRepositoriesByPage(this.page-1)">
             Página anterior </button>
-        <button id="next=page" style="width: fit-content;" mat-stroked-button color="primary" (click)="nextPage()">
+        <button id="next=page" style="width: fit-content;" mat-stroked-button color="primary" (click)="getRepositoriesByPage(this.page+1)">
             Próxima página </button>
     </div>
 

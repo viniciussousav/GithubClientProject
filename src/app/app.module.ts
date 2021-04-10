@@ -42,15 +42,7 @@ import { FilterPipePipe } from './filter-pipe.pipe'
     MatListModule,
     
   ],
-  exports: [
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatCardModule,
-    MatRippleModule,
-    MatListModule
-  ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })
