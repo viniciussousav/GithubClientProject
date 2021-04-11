@@ -10,7 +10,7 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent implements OnInit {
 
-  username_email = ""
+  username_email: string = ""
 
   constructor(
     private loginService: LoginService,
@@ -26,20 +26,20 @@ export class LoginComponent implements OnInit {
 
     if (code) {
       console.log("Requested code " + code);
-      this.loginService.requestToken(code).subscribe(data => {
-        if (data.access_token) {
-          this.loginService.setObtainedToken(data.access_token);
-          this.router.navigate(['profile']);
-        }
-      })
+      this.loginService.requestToken(code).subscribe({
+        next: token => {
+          if (token.access_token) {
+            this.loginService.setObtainedToken(token.access_token);
+            this.router.navigate(['profile']);
+          }
+        },
+        error: err => console.log('Error while trying to sign in', err)
+      });
     }
   }
 
-  authenticate(): void {
-
-    console.log(this.username_email)
-
-    this.loginService.oauth(this.username_email);
-
+  authenticate(username: string): void {
+    console.log(this.loginService.oauth(username));
+    window.location.href = this.loginService.oauth(username);
   }
 }
