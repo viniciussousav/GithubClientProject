@@ -15,11 +15,9 @@ export class ListaRepositoriosService {
 
   getListRepositoriesByPage(page: number): Observable<Repository[]> {
 
-    let token = this.loginService.getObtainedToken();
-
     return this.httpClient.get<Repository[]>(`${this._REPO_URL}?page=${page}&per_page=10`, {
       headers: {
-        "Authorization": "token " + token
+        "Authorization": "token " + localStorage.getItem("token")
       }
     })
   }

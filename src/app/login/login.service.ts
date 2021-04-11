@@ -21,7 +21,7 @@ export class LoginService {
   constructor(private httpClient: HttpClient) { }
 
   oauth(username: string) {
-    return `${this.url_authentication}?client_id=${this.client_id}&login=${username}&scope=[repo]`
+    return `${this.url_authentication}?client_id=${this.client_id}&login=${username}&scope=user`
   }
 
   requestToken(code: string): Observable<GithubToken> {

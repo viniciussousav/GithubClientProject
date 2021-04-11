@@ -16,20 +16,23 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private route: ActivatedRoute) {
-
-  }
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    let code = this.route.snapshot.queryParamMap.get("code")
-
+    let _token = localStorage.getItem("token");
+    if (_token) {
+      this.router.navigate(['profile']);
+    }
+    
+    let code = this.route.snapshot.queryParamMap.get("code");
     if (code) {
       console.log("Requested code " + code);
       this.loginService.requestToken(code).subscribe({
         next: token => {
           if (token.access_token) {
             this.loginService.setObtainedToken(token.access_token);
+            localStorage.setItem("token", token.access_token);
             this.router.navigate(['profile']);
           }
         },

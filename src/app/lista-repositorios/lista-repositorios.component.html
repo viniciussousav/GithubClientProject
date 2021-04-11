@@ -2,20 +2,20 @@
 
     <mat-form-field appearance="standard">
         <mat-label for="search-text">Pesquise por um repositório</mat-label>
-        <input matInput id="search-text" aria-describedby="search-text" [(ngModel)]="searchText"
+        <input matInput id="search-text" aria-describedby="search-text" [(ngModel)]="filter"
             placeholder="Ex: AngularStarterProject">
     </mat-form-field>
 
     <div id="page-nav">
-        <button id="back-page" style="width: fit-content;" mat-stroked-button color="primary" (click)="getRepositoriesByPage(this.page-1)">
+        <button id="back-page" style="width: fit-content;" mat-stroked-button color="primary" (click)="getRepositoriesByPage(_page - 1)">
             Página anterior </button>
-        <button id="next=page" style="width: fit-content;" mat-stroked-button color="primary" (click)="getRepositoriesByPage(this.page+1)">
+        <button id="next=page" style="width: fit-content;" mat-stroked-button color="primary" (click)="getRepositoriesByPage(_page + 1)">
             Próxima página </button>
     </div>
 
 
-    <mat-list id="list-group">
-        <mat-list-item *ngFor="let item of repositories | filterPipe: searchText">
+    <mat-list id="list-group" *ngIf="repositories">
+        <mat-list-item *ngFor="let item of repositories | filterPipe: filter">
             <div mat-line><strong>{{item.name}}</strong></div>
             <div mat-line>{{item.full_name}}</div>
             <div mat-line>{{item.description || "Nenhuma descrição"}}</div>
