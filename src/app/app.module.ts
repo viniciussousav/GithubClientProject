@@ -8,16 +8,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { PerfilComponent } from './perfil/perfil.component';
-import { ListaRepositoriosComponent } from './lista-repositorios/lista-repositorios.component'
-
-import { MatInputModule } from '@angular/material/input'
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { MatCardModule } from '@angular/material/card'
-import { MatRippleModule } from '@angular/material/core';
-import { MatListModule  } from '@angular/material/list';
+import { ListaRepositoriosComponent } from './lista-repositorios/lista-repositorios.component';
 import { FilterPipePipe } from './filter-pipe.pipe'
+import { MaterialModule } from './core/material.module';
 
 @NgModule({
   declarations: [
@@ -33,14 +26,7 @@ import { FilterPipePipe } from './filter-pipe.pipe'
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatCardModule,
-    MatRippleModule,
-    MatListModule,
-    
+    MaterialModule
   ],
   exports: [],
   providers: [],
