@@ -4,10 +4,16 @@
     flex-direction: column;
 }
 
+mat-form-field {
+    width: 50%;
+    margin: 10px auto;
+}
+
 .list-box mat-list {
     display: flex;
     flex-direction: column;
     margin: auto auto;
+    width: 50%;
 }
 
 .list-box mat-list mat-list-item {
@@ -19,20 +25,34 @@
     margin-bottom: 10px;
 }
 
-.list-box mat-list mat-list-item :hover{
-    transition: 2s;
-    box-shadow: -7p
-    ￼x 17px 15px -18px red;
-
-}
 
 #page-nav{
     display: flex;
     flex-direction: row;
-    margin: auto auto;
+    width: 50%;
+    margin: auto;
+    justify-content: space-evenly;
 }
 
-mat-form-field {
-    margin: auto auto;
-    width: fit-content;
+
+@media ( max-width: 650px ) {
+    .list-box mat-list {
+        display: flex;
+        flex-direction: column;
+        margin: auto auto;
+        width: 100%;
+    }
+
+    mat-form-field {
+        width: 95%;  
+        margin: 10px auto;      
+    }
+    #page-nav{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    
+    
 }

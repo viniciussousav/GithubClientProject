@@ -19,8 +19,6 @@ export class PerfilComponent implements OnInit {
   ngOnInit(): void {
     this.token = this.loginService.getObtainedToken();
 
-    console.log("Profile token " + this.token)
-
     this.perfilService.getAuthenticatedUser(this.token).subscribe({
       next: user => {
         this.profile = user;
@@ -29,11 +27,5 @@ export class PerfilComponent implements OnInit {
       },
       error: err => console.log('Error while getting authenticated user', err)
     });
-
-  }
-
-  logout(): void {
-    localStorage.clear();
-    this.router.navigate(['/']);
   }
 }

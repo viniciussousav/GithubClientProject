@@ -9,9 +9,10 @@ import { GithubToken } from '../classes/token'
 export class LoginService {
 
   private client_id: string = "0067b0833b0ab64757b5";
-  private access_token: string = ""
   private login: string = ""
   private url_authentication: string = "https://github.com/login/oauth/authorize"
+  private access_token: string = ""
+
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -25,8 +26,6 @@ export class LoginService {
   }
 
   requestToken(code: string): Observable<GithubToken> {
-
-    console.log("getToken from code " + code)
 
     let body =
     {
@@ -52,5 +51,10 @@ export class LoginService {
 
   setLoginString(login: string) {
     this.login = login
+  }
+
+  logout() {
+    localStorage.clear();
+    this.access_token = "";
   }
 }

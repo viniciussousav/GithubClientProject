@@ -11,6 +11,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { ListaRepositoriosComponent } from './lista-repositorios/lista-repositorios.component';
 import { FilterPipePipe } from './filter-pipe.pipe'
 import { MaterialModule } from './core/material.module';
+import { NavBarComponent } from './core/nav-bar/nav-bar.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MaterialModule } from './core/material.module';
     LoginComponent,
     PerfilComponent,
     ListaRepositoriosComponent,
-    FilterPipePipe
+    FilterPipePipe,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

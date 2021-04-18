@@ -24,12 +24,10 @@ export class ListaRepositoriosService {
 
   getAllListRepositories(): Observable<Repository[]> {
 
-    let token = this.loginService.getObtainedToken();
-
     return this.httpClient.get<Repository[]>(this._REPO_URL, {
       headers: {
-        "Authorization": "token " + token
+        "Authorization": "token " + localStorage.getItem("token")
       }
-    })
+    });
   }
 }

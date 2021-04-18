@@ -9,6 +9,7 @@ import { ListaRepositoriosService } from './lista-repositorios.service';
 })
 export class ListaRepositoriosComponent implements OnInit {
 
+  allRepositories: Repository[] = [];
   repositories: Repository[] = [];
   _searchText: string = ''
   _page: number = 1;
@@ -16,13 +17,14 @@ export class ListaRepositoriosComponent implements OnInit {
   constructor(private listaRepositoriosService: ListaRepositoriosService) { }
 
   ngOnInit(): void {
+    this.getRepositories();
     this.getRepositoriesByPage(this._page);
   }
 
   getRepositories(): void {
     this.listaRepositoriosService.getAllListRepositories().subscribe({
       next: repos => {
-        this.repositories = repos;
+        this.allRepositories = repos;
       },
       error: err => {
         console.log('Error getting repositories', err);
@@ -38,9 +40,6 @@ export class ListaRepositoriosComponent implements OnInit {
             this.repositories = repos;
             this._page = page;
           }
-        },
-        error: err => {
-          console.log(`Error getting repositories from page ${page}`, err);
         }
       });
   }

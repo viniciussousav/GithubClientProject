@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    private snackBar: MatSnackBar,
     private router: Router,
     private route: ActivatedRoute) { }
 
@@ -22,12 +21,12 @@ export class LoginComponent implements OnInit {
 
     let _token = localStorage.getItem("token");
     if (_token) {
+      this.loginService.setObtainedToken(_token);
       this.router.navigate(['profile']);
     }
     
     let code = this.route.snapshot.queryParamMap.get("code");
     if (code) {
-      console.log("Requested code " + code);
       this.loginService.requestToken(code).subscribe({
         next: token => {
           if (token.access_token) {
@@ -42,7 +41,6 @@ export class LoginComponent implements OnInit {
   }
 
   authenticate(username: string): void {
-    console.log(this.loginService.oauth(username));
     window.location.href = this.loginService.oauth(username);
   }
 }

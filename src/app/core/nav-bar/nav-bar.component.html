@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+    <span>Github Client</span>
+    <span class="example-spacer" *ngIf="showOptions">
+        <button mat-button class="example-icon favorite-icon" [routerLink]="['/profile']"
+            aria-label="Example icon-button with heart icon">
+            Perfil
+        </button>
+        <button mat-button class="example-icon" [routerLink]="['/repositories']"
+            aria-label="Example icon-button with share icon">
+            Repositórios
+        </button>
+
+        <button id="git-btn-exit" mat-raised-button color="warn" [routerLink]="['/']" (click)="logout()" >Sair </button>
+
+    </span>
+</mat-toolbar>

@@ -6,7 +6,10 @@ import { PerfilComponent } from './perfil/perfil.component';
 
 const routes: Routes = [
   {
-    path: '', component: LoginComponent
+    path: '', redirectTo: 'login', pathMatch: 'full'
+  },
+  {
+    path: 'login', component: LoginComponent
   },
   {
     path: 'profile', component: PerfilComponent

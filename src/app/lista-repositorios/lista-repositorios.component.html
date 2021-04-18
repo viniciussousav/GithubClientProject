@@ -1,15 +1,15 @@
-<div class="list-box">
+<div class="list-box"> 
 
     <mat-form-field appearance="standard">
         <mat-label for="search-text">Pesquise por um repositório</mat-label>
-        <input matInput id="search-text" aria-describedby="search-text" [(ngModel)]="filter"
+        <input matInput class="search-text" aria-describedby="search-text" [(ngModel)]="filter"
             placeholder="Ex: AngularStarterProject">
     </mat-form-field>
 
     <div id="page-nav">
-        <button id="back-page" style="width: fit-content;" mat-stroked-button color="primary" (click)="getRepositoriesByPage(_page - 1)">
+        <button id="back-page" style="width: fit-content;" mat-stroked-button color="primary" (click)="getRepositoriesByPage(_page - 1)" [disabled] = "this._page == 1" >
             Página anterior </button>
-        <button id="next=page" style="width: fit-content;" mat-stroked-button color="primary" (click)="getRepositoriesByPage(_page + 1)">
+        <button id="next=page" style="width: fit-content;" mat-stroked-button color="primary" (click)="getRepositoriesByPage(_page + 1)" [disabled] = "(this._page * 10 > this.allRepositories.length)" >
             Próxima página </button>
     </div>
 

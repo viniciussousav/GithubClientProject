@@ -5,7 +5,7 @@
             <mat-card-title>{{profile.name}}</mat-card-title>
             <mat-card-subtitle> {{profile.login}} | {{profile.location}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src={{profile.avatar_url}} alt="Photo of a Shiba Inu">
+        <img mat-card-image [src]="profile.avatar_url" alt="Profile picture">
         <mat-card-content>
             <p>
                 {{profile.bio}}
@@ -18,11 +18,10 @@
 
         </mat-card-content>
         <mat-card-actions>
-            <button id="git-btn-link" mat-raised-button color="primary"> <a href={{profile.html_url}}> Ver perfil no
+            <button id="git-btn-link" mat-raised-button color="primary"> <a [href]="profile.html_url"> Ver perfil no
                     github</a></button>
 
             <button id="git-btn-link" mat-stroked-button color="primary" routerLink ="/repositories" > Ver lista de repositórios </button>
-            <button id="git-btn-exit" mat-button color="warn" (click)="logout()" >Sair </button>
 
         </mat-card-actions>
     </mat-card>
